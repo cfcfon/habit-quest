@@ -7,7 +7,6 @@ import {HabitService} from "../service/habit.service";
 import {ControlGroup} from "angular2/common";
 import {FormBuilder} from "angular2/common";
 import {Validators} from "angular2/common";
-import {stringify} from "angular2/src/facade/lang";
 import {CanDeactivate} from "angular2/router";
 import {ComponentInstruction} from "angular2/router";
 

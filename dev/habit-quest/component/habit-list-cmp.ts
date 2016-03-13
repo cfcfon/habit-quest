@@ -17,7 +17,11 @@ import {Router} from "angular2/router";
                       [class.clicked]="selected === habit">
                       {{habit.text}}
                 </span>
+                <div *ngIf="selected === habit">
                 <button (click)="onEdit(habit)">Edit</button>
+                <button (click)="onDelete(habit)">Delete</button>
+                </div>
+
             </li>
         </ul>
     `,
@@ -41,6 +45,10 @@ export class HabitListComponent implements OnInit{
 
     onEdit(habit: Habit){
         this._router.navigate(['Edit', {editMode: 'edit', index: Number(this._habitService.getIndexOfHabit(habit))}]);
+    }
+
+    onDelete(habit: Habit){
+        this._habitService.deleteHabit(habit);
     }
 
     ngOnInit():any {
