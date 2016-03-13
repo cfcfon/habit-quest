@@ -13,7 +13,7 @@ import {HabitComponent} from "./habit-quest/component/habit.cmp";
 })
 
 @RouteConfig([
-    {path: '/...', name: 'HabitComponent', component: HabitComponent, useAsDefault:true}
+    {path: '/habit-quest/...', name: 'HabitComponent', component: HabitComponent, useAsDefault:true}
 ])
 
 export class AppComponent{

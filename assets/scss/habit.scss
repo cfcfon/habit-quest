@@ -1,9 +1,17 @@
 .habits{
 
+  &__form{
+    margin: 16px;
+  }
+
   &__list{
-    &--done-true{
+    &--done{
       text-decoration: line-through;
     }
   }
 
+}
+
+.clicked{
+  color: red;
 }

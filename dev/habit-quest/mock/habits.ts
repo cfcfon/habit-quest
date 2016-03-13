@@ -9,5 +9,13 @@ export const HABITS: Habit[] = [
     {
         text:'Eat Clean',
         done: false
+    },
+    {
+        text:'Read a book',
+        done: false
+    },
+    {
+        text:'Use stair',
+        done: true
     }
 ];
