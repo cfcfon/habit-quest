@@ -3,6 +3,7 @@ import {HabitService} from "../service/habit.service";
 import {Habit} from "../shared/habit";
 import {OnInit} from "angular2/core";
 import {Router} from "angular2/router";
+import {CapitalizePipe} from "../pipe/capitalize.pipe";
 
 @Component({
     selector: 'habit-list',
@@ -10,12 +11,13 @@ import {Router} from "angular2/router";
         <h5>Habit List</h5>
         <button (click)="onAdd()">Add Quest</button>
         <ul>
-            <li *ngFor="#habit of habits">
+            <li *ngFor="#habit of habits" class="habits__list" >
                 <input type="checkbox" [(ngModel)]="habit.done">
                 <span (click)="onSelected(habit)"
                       [class.habits__list--done]="habit.done"
-                      [class.clicked]="selected === habit">
-                      {{habit.text}}
+                      [class.clicked]="selected === habit"
+                      >
+                      {{habit.text|capitalize}}
                 </span>
                 <div *ngIf="selected === habit">
                 <button (click)="onEdit(habit)">Edit</button>
@@ -25,7 +27,8 @@ import {Router} from "angular2/router";
             </li>
         </ul>
     `,
-    styleUrls: ['src/css/habit.css']
+    styleUrls: ['src/css/habit.css'],
+    pipes: [CapitalizePipe]
 })
 
 export class HabitListComponent implements OnInit{
@@ -36,7 +39,17 @@ export class HabitListComponent implements OnInit{
     constructor(private _habitService: HabitService, private _router: Router){}
 
     onSelected(habit: Habit){
-        this.selected = habit;
+        if(this.selected != habit){
+            this.selected = habit;
+        }else {
+            this.selected = null;
+        }
+    }
+
+    getAllHabits(){
+        this._habitService.getAllHabits().then((habits: Habit[]) => {
+            this.habits = habits;
+        });
     }
 
     onAdd(){
@@ -52,8 +65,6 @@ export class HabitListComponent implements OnInit{
     }
 
     ngOnInit():any {
-        this._habitService.getAllHabits().then((habits: Habit[]) => {
-            this.habits = habits;
-        });
+        this.getAllHabits();
     }
 }

@@ -14,12 +14,16 @@ import {ComponentInstruction} from "angular2/router";
     selector: 'habit-edit',
     template:`
         <h5>Habit Edit</h5>
-        <a (click)="onBack()">Back</a>
+        <div>
+            <button (click)="onBack()">Back</button>
+        </div>
 
         <form class="habits__form" [ngFormModel]="myForm" #f="ngForm" (ngSubmit)="onSubmit()">
              <button type="submit" [disabled]="!f.valid">Save</button>
-             <input type="checkbox" [ngFormControl]="myForm.controls['done']">
-             <input type="text" [ngFormControl]="myForm.controls['text']" #text>
+             <div>
+                 <input type="checkbox" [ngFormControl]="myForm.controls['done']">
+                 <input type="text" [ngFormControl]="myForm.controls['text']" size="30">
+             </div>
         </form>
     `,
     styleUrls: ['src/css/habit.css']

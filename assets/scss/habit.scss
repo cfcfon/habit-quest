@@ -5,13 +5,32 @@
   }
 
   &__list{
+
+    &--text{
+      text-transform: capitalize;
+    }
+
     &--done{
       text-decoration: line-through;
+      color: grey;
     }
+
   }
 
 }
 
 .clicked{
   color: red;
+}
+
+span{
+  clear: both;
+}
+
+li{
+  list-style: none;
+}
+
+textarea{
+  resize: none;
 }
