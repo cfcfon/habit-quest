@@ -1,0 +1,9 @@
+.habits{
+
+  &__list{
+    &--done-true{
+      text-decoration: line-through;
+    }
+  }
+
+}
